@@ -1,0 +1,19 @@
+services:
+  node-server:
+    image: node-server-image
+    build:
+      context: ./Express-Server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Express-Server:/app
+    depends_on:
+      - flask-api
+
+  flask-api:
+    image: flask-api-image
+    build:
+      context: ./Flask-API
+    volumes:
+      - ./Flask-API:/app
+
